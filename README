@@ -1,5 +1,112 @@
-Trata-se de um projeto para o processo seletivo respectivo da empresa AutoU
+# 📧 Sortly - AI Email Assistant
 
-O projeto consiste em um analisador de emails utilizando requisições por API com inteligência artificial
+> **Desafio AutoU:** Aplicação web inteligente para triagem, classificação e resposta automática de emails corporativos utilizando Inteligência Artificial.
 
-é sobre isso k
+![Project Status](https://img.shields.io/badge/status-concluído-green)
+![Python](https://img.shields.io/badge/python-3.10+-blue)
+![Flask](https://img.shields.io/badge/flask-3.0+-orange)
+
+## 🎯 Sobre o Projeto
+
+O **Sortly** é uma ferramenta desenvolvida para otimizar o fluxo de trabalho de suporte e atendimento. A aplicação lê o conteúdo de emails (via texto direto ou upload de arquivos PDF/TXT), utiliza o modelo **Google Gemini 2.5 Flash** para analisar o contexto e realiza duas ações principais:
+
+1.  **Classificação:** Categoriza o email como "Produtivo" (requer ação) ou "Improdutivo" (spam, agradecimentos).
+2.  **Resposta Sugerida:** Gera automaticamente uma resposta profissional adequada ao contexto.
+
+Além disso, o sistema conta com histórico de processamento salvo em banco de dados e gerenciamento de chaves de API (BYOK).
+
+## ✨ Funcionalidades
+
+-   🚀 **Análise com IA:** Integração com Google Gemini para processamento de linguagem natural.
+-   📂 **Suporte a Arquivos:** Upload e leitura automática de arquivos `.pdf` e `.txt`.
+-   👁️ **Pré-visualização de PDF:** Visualizador de documentos integrado na interface antes do envio.
+-   🗂️ **Histórico Automático:** Salvamento de logs de todos os emails processados (SQLite).
+-   🎨 **Interface Moderna:** Dashboard responsivo construído com TailwindCSS e Phosphor Icons.
+-   🔑 **Gestão de API Key:** Permite que o usuário insira sua própria chave da API nas configurações (armazenamento local).
+
+## 🛠️ Tecnologias Utilizadas
+
+* **Backend:** Python, Flask, SQLAlchemy.
+* **AI:** Google Generative AI (Gemini SDK).
+* **Frontend:** HTML5, JavaScript (Vanilla), TailwindCSS (CDN).
+* **Banco de Dados:** SQLite.
+* **Processamento de Arquivos:** PyPDF2.
+
+## 🚀 Como Executar Localmente
+
+Siga os passos abaixo para rodar a aplicação na sua máquina.
+
+### Pré-requisitos
+* Python 3.x instalado.
+* Uma chave de API do Google Gemini (obtenha gratuitamente no [Google AI Studio](https://aistudio.google.com/)).
+
+### Passo a Passo
+
+1.  **Clone o repositório**
+    ```bash
+    git clone [https://github.com/Szervinsk/Sortly.git](https://github.com/Szervinsk/Sortly.git)
+    cd sortly
+    ```
+
+2.  **Crie e ative um ambiente virtual (Recomendado)**
+    ```bash
+    # Windows
+    python -m venv venv
+    venv\Scripts\activate
+
+    # Linux/Mac
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+
+3.  **Instale as dependências**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4.  **Configure as Variáveis de Ambiente**
+    Crie um arquivo chamado `.env` na raiz do projeto e adicione sua chave:
+    ```env
+    GOOGLE_API_KEY=sua_chave_aqui_colada_sem_aspas
+    ```
+
+5.  **Execute a aplicação**
+    ```bash
+    python run.py
+    ```
+
+6.  **Acesse no navegador**
+    Abra `http://127.0.0.1:5000` no seu navegador.
+
+> **Nota:** O banco de dados (`database.db`) será criado automaticamente na primeira execução dentro da pasta `instance/`.
+
+## 📂 Estrutura do Projeto
+
+```text
+/
+├── app/
+│   ├── static/
+│   │   └── js/
+│   │       └── functions.js    # Lógica de Frontend e Fetch API
+│   ├── templates/
+│   │   ├── index.html          # Dashboard Principal
+│   │   ├── history.html        # Histórico de Emails
+│   │   └── preferences.html    # Configuração de API Key
+│   ├── __init__.py             # Inicialização do App e DB
+│   ├── models.py               # Modelo do Banco de Dados
+│   └── views.py                # Rotas e Lógica de IA
+├── uploads/                    # Pasta temporária para arquivos
+├── instance/                   # Onde fica o banco SQLite
+├── .env                        # Variáveis de ambiente (não comitar)
+├── requirements.txt            # Lista de dependências
+└── run.py                      # Ponto de entrada
+
+```
+
+## 📄 Licença
+
+Este projeto foi desenvolvido para fins de estudo e portfólio. Sinta-se livre para usar e modificar.
+
+---
+
+Desenvolvido por Matheus Ribeiro Szervinks
